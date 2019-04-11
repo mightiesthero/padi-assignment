@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+HEADS UP! i18n 1.1 changed fallbacks to exclude default locale.
+But that may break your application.
 
-Things you may want to cover:
+Please check your Rails app for 'config.i18n.fallbacks = true'.
+If you're using I18n (>= 1.1.0) and Rails (< 5.2.2), this should be
+'config.i18n.fallbacks = [I18n.default_locale]'.
+If not, fallbacks will be broken in your app by I18n 1.1.x.
 
-* Ruby version
+For more info see:
+https://github.com/svenfuchs/i18n/releases/tag/v1.1.0
 
-* System dependencies
+Post-install message from chromedriver-helper:
 
-* Configuration
++--------------------------------------------------------------------+
+| |
+| NOTICE: chromedriver-helper is deprecated after 2019-03-31. |
+| |
+| Please update to use the 'webdrivers' gem instead. |
+| See https://github.com/flavorjones/chromedriver-helper/issues/83 |
+| |
++--------------------------------------------------------------------+
 
-* Database creation
+Post-install message from sass:
 
-* Database initialization
+Ruby Sass has reached end-of-life and should no longer be used.
 
-* How to run the test suite
+- If you use Sass as a command-line tool, we recommend using Dart Sass, the new
+  primary implementation: https://sass-lang.com/install
 
-* Services (job queues, cache servers, search engines, etc.)
+- If you use Sass as a plug-in for a Ruby web framework, we recommend using the
+  sassc gem: https://github.com/sass/sassc-ruby#readme
 
-* Deployment instructions
+- For more details, please refer to the Sass blog:
+  https://sass-lang.com/blog/posts/7828841
 
-* ...
+         run  bundle exec spring binstub --all
+
+- bin/rake: spring inserted
+- bin/rails: spring inserted
