@@ -5,6 +5,7 @@ class CreateSurveySites < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :city
       t.string :longitude
+      t.string :latitude
       t.string :status
       t.integer :sale_id
       t.references :user, foreign_key: true

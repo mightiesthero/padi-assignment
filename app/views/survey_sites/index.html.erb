@@ -10,8 +10,6 @@
       <th>City</th>
       <th>Longitude</th>
       <th>Status</th>
-      <th>Sale</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,8 +22,6 @@
         <td><%= survey_site.city %></td>
         <td><%= survey_site.longitude %></td>
         <td><%= survey_site.status %></td>
-        <td><%= survey_site.sale_id %></td>
-        <td><%= survey_site.user %></td>
         <td><%= link_to 'Show', survey_site %></td>
         <td><%= link_to 'Edit', edit_survey_site_path(survey_site) %></td>
         <td><%= link_to 'Destroy', survey_site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
