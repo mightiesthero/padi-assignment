@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clientname: MyString
+  address: MyString
+  city: MyString
+  longitude: MyString
+  status: false
+  sale_id: 1
+  user: one
+
+two:
+  clientname: MyString
+  address: MyString
+  city: MyString
+  longitude: MyString
+  status: false
+  sale_id: 1
+  user: two

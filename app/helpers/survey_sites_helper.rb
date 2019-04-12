@@ -1,0 +1,2 @@
+module SurveySitesHelper
+end

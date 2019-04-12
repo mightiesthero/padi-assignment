@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Clientname:</strong>
+  <%= @survey_site.clientname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @survey_site.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @survey_site.city %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @survey_site.longitude %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @survey_site.status %>
+</p>
+
+<p>
+  <strong>Sale:</strong>
+  <%= @survey_site.sale_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @survey_site.user %>
+</p>
+
+<%= link_to 'Edit', edit_survey_site_path(@survey_site) %> |
+<%= link_to 'Back', survey_sites_path %>

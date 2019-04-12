@@ -1,0 +1,52 @@
+<%= form_with(model: survey_site, local: true) do |form| %>
+  <% if survey_site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(survey_site.errors.count, "error") %> prohibited this survey_site from being saved:</h2>
+
+      <ul>
+      <% survey_site.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :clientname %>
+    <%= form.text_field :clientname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_id %>
+    <%= form.number_field :sale_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
