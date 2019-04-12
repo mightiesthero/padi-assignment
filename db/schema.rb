@@ -63,15 +63,15 @@ ActiveRecord::Schema.define(version: 2019_04_12_124524) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", default: 1
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "survey_images", "survey_sites"
   add_foreign_key "survey_sites", "users"
   add_foreign_key "survey_technicians", "survey_sites"
   add_foreign_key "survey_technicians", "users"
-  add_foreign_key "users", "users"
+  add_foreign_key "users", "roles"
 end

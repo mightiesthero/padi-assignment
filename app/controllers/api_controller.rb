@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   protect_from_forgery with: :null_session
+  before_action :find_user, only: [:submit]
 
   def get_users
     @users = User.all
@@ -13,12 +14,12 @@ class ApiController < ApplicationController
   end
 
   def submit
-    survey = SurveySite.new(submit_params)
-    # byebug
+    survey = @user.survey_sites.new(submit_params)
 
     message = "Survey saved"
     if survey.save
-      message = message
+      link = "#{request.protocol}#{request.host_with_port}#{survey_site_path(survey)}"
+      message = "#{message} #{link}"
     else
       message = survey.errors.full_messages
     end
@@ -30,10 +31,11 @@ class ApiController < ApplicationController
   end
 
   private
+    def find_user
+      @user = User.find_by(email: params[:email])
+    end
+
     def submit_params
-      puts params[:email]
-      user = User.find_by(email: params[:email])
-      params[:user_id] = user.id
       params.permit(:clientname, :address, :city, :longitude, :status, :sale_id, :user_id)
     end
 end

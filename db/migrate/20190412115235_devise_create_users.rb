@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.timestamps null: false
 
       # Custom
-      t.references :user, foreign_key: true, default: 1
+      t.references :role, foreign_key: true
     end
 
     add_index :users, :email,                unique: true
