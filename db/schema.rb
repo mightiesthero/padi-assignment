@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_123050) do
+ActiveRecord::Schema.define(version: 2019_04_12_124524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_04_12_123050) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "survey_images", force: :cascade do |t|
+    t.string "name"
+    t.binary "img"
+    t.text "description"
+    t.bigint "survey_site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_site_id"], name: "index_survey_images_on_survey_site_id"
   end
 
   create_table "survey_sites", force: :cascade do |t|
@@ -33,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_04_12_123050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_survey_sites_on_user_id"
+  end
+
+  create_table "survey_technicians", force: :cascade do |t|
+    t.bigint "survey_site_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_site_id"], name: "index_survey_technicians_on_survey_site_id"
+    t.index ["user_id"], name: "index_survey_technicians_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,6 +68,9 @@ ActiveRecord::Schema.define(version: 2019_04_12_123050) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "survey_images", "survey_sites"
   add_foreign_key "survey_sites", "users"
+  add_foreign_key "survey_technicians", "survey_sites"
+  add_foreign_key "survey_technicians", "users"
   add_foreign_key "users", "roles"
 end

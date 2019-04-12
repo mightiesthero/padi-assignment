@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Survey site:</strong>
+  <%= @survey_technician.survey_site %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @survey_technician.user %>
+</p>
+
+<%= link_to 'Edit', edit_survey_technician_path(@survey_technician) %> |
+<%= link_to 'Back', survey_technicians_path %>
