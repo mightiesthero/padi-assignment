@@ -36,6 +36,6 @@ class ApiController < ApplicationController
     end
 
     def submit_params
-      params.permit(:clientname, :address, :city, :longitude, :status, :sale_id, :user_id)
+      params.permit(:clientname, :address, :city, :longitude, :latitude, :status, :sale_id, :user_id)
     end
 end
