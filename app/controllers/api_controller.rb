@@ -21,6 +21,7 @@ class ApiController < ApplicationController
     if survey.save
       link = "#{request.protocol}#{request.host_with_port}#{survey_site_path(survey)}"
       message = "#{message} #{link}"
+      # TODO: refactor
       begin
         UserMailer.survey(params[:email], survey, link).deliver_now
       rescue
