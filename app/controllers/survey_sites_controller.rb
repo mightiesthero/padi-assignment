@@ -5,7 +5,7 @@ class SurveySitesController < ApplicationController
   # GET /survey_sites
   # GET /survey_sites.json
   def index
-    @survey_sites = SurveySite.all
+    @survey_sites = SurveySite.order(sort_column + ' ' + sort_direction)
   end
 
   # GET /survey_sites/1

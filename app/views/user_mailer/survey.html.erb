@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    Client Name: <%= @survey.clientname %>
+    Address: <%= @survey.address %>
+    City: <%= @survey.city %>
+    Created At: <%= @survey.created_at %>
+    Status: <%= SurveySite::STATUS[@survey.status] %>
+    <%# TODO: Images %>
+    <%# TODO: Team %>
+    <%= @link %>
+  </body>
+</html>

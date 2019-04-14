@@ -21,7 +21,7 @@ roles.each do |role|
   end
 end
 
-users = ["beng@gmail.com"]
+users = ["bengsiswantoh@gmail.com"]
 users.each do |user|
   data = User.find_by(email: user)
   if !data

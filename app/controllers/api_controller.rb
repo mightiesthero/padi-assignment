@@ -20,6 +20,7 @@ class ApiController < ApplicationController
     if survey.save
       link = "#{request.protocol}#{request.host_with_port}#{survey_site_path(survey)}"
       message = "#{message} #{link}"
+      UserMailer.survey(params[:email], survey, link).deliver_now
     else
       message = survey.errors.full_messages
     end
@@ -36,6 +37,8 @@ class ApiController < ApplicationController
     end
 
     def submit_params
-      params.permit(:clientname, :address, :city, :longitude, :latitude, :status, :sale_id, :user_id)
+      # sales = User.find_by(email: params[:sales])
+      # params[:user_id] = sales.id
+      params.permit(:clientname, :address, :city, :longitude, :latitude, :status, :sales_id, :user_id)
     end
 end

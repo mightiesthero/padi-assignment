@@ -23,5 +23,8 @@ module PadiAssignment
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end
+
+    # Set time zone
+    config.time_zone = "Jakarta"
   end
 end
