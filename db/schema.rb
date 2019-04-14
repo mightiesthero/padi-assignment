@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_124524) do
     t.string "longitude"
     t.string "latitude"
     t.string "status"
-    t.integer "sale_id"
+    t.integer "sales_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

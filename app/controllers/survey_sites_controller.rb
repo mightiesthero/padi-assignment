@@ -1,5 +1,6 @@
 class SurveySitesController < ApplicationController
   before_action :set_survey_site, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /survey_sites
   # GET /survey_sites.json
@@ -71,4 +72,13 @@ class SurveySitesController < ApplicationController
     def survey_site_params
       params.require(:survey_site).permit(:clientname, :address, :city, :longitude, :status, :sale_id, :user_id)
     end
+
+    def sort_column
+      SurveySite.column_names.include?(params[:sort]) || params[:sort] == "users.role" ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "DESC"
+    end
+
 end
