@@ -32,7 +32,7 @@ class ApiController < ApplicationController
     end
 
     result = {
-      message: message
+      message: message,
       email_status: email_status
     }
     render json: result.to_json
