@@ -66,6 +66,8 @@ gem 'devise'
 
 # postgres database
 gem 'pg'
+# mysql database
+# gem 'mysql2'
 
 # allows CORS
 gem 'rack-cors'

@@ -22,7 +22,7 @@ class ApiController < ApplicationController
       link = "#{request.protocol}#{request.host_with_port}#{survey_site_path(survey)}"
       message = "#{message} #{link}"
       begin
-        UserMailer.survey(params[:email], survey, link).deliver_now
+        UserMailer.survey("#{params[:email]},#{params[:sales]}", survey, link).deliver_now
         email_status = "send email success"
       rescue
         email_status = "send email error"
