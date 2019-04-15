@@ -6,6 +6,7 @@ class SurveySite < ApplicationRecord
   accepts_nested_attributes_for :survey_technicians
 
   has_many :survey_images
+  accepts_nested_attributes_for :survey_images
 
   validates :user_id, presence: true
 

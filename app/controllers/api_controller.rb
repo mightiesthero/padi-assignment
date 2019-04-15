@@ -15,14 +15,12 @@ class ApiController < ApplicationController
 
   def submit
     email_status = ""
-    # TODO: save survey_images
     survey = @user.survey_sites.new(submit_params)
 
     message = "Survey saved"
     if survey.save
       link = "#{request.protocol}#{request.host_with_port}#{survey_site_path(survey)}"
       message = "#{message} #{link}"
-      # TODO: refactor
       begin
         UserMailer.survey(params[:email], survey, link).deliver_now
         email_status = "send email success"
@@ -58,6 +56,12 @@ class ApiController < ApplicationController
         end
       end
 
+      params[:survey_images_attributes].each do |image|
+        if image[:img]
+          image[:img] = Base64.decode64(image[:img])
+        end
+      end
+
       params.permit(
         :clientname,
         :address,
@@ -68,6 +72,11 @@ class ApiController < ApplicationController
         :sales_id,
         survey_technicians_attributes: [
           :user_id
+        ],
+        survey_images_attributes: [
+          :img,
+          :name,
+          :description
         ])
     end
 end

@@ -4,13 +4,70 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    Client Name: <%= @survey.clientname %>
-    Address: <%= @survey.address %>
-    City: <%= @survey.city %>
-    Created At: <%= @survey.created_at %>
-    Status: <%= SurveySite::STATUS[@survey.status] %>
-    <%# TODO: Images %>
-    <%# TODO: Team %>
-    <%= @link %>
+    <p>
+      <strong>Clientname:</strong>
+      <%= @survey_site.clientname %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @survey_site.address %>
+    </p>
+
+    <p>
+      <strong>City:</strong>
+      <%= @survey_site.city %>
+    </p>
+
+    <p>
+      <strong>Longitude:</strong>
+      <%= @survey_site.longitude %>
+    </p>
+
+    <p>
+      <strong>Latitude:</strong>
+      <%= @survey_site.latitude %>
+    </p>
+
+    <p>
+      <strong>Created At:</strong>
+      <%= @survey_site.created_at %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= SurveySite::STATUS[@survey_site.status] %>
+    </p>
+
+    <p>
+      <strong>Technicians:</strong>
+      <% @survey_site.survey_technicians.each do |technician| %>
+        <%= technician.user.email %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Images:</strong>
+      <% @survey_site.survey_images.each do |image| %>
+        <p>
+          <img src="data:image/jpeg;base64,<%= Base64.encode64(image.img) %>" />
+          <%= image.name %>
+          <%= image.description %>
+        </p>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Sales:</strong>
+      <%= @survey_site.sales.email %>
+    </p>
+
+    <p>
+      <strong>User:</strong>
+      <%= @survey_site.user.email %>
+    </p>
+
+    <a href"<%= @link %>"></a>
+
   </body>
 </html>
