@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   protect_from_forgery with: :null_session
+  skip_before_action :authenticate_user!
   before_action :find_user, only: [:submit]
 
   def get_users
@@ -7,8 +8,10 @@ class ApiController < ApplicationController
   end
 
   def authenticate
+    user = User.authenticate(params['email'], params['password'])
+    message = user ? "success" : "email or password not match"
     result = {
-      message: ""
+      message: message
     }
     render json: result.to_json
   end
