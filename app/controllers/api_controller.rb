@@ -8,8 +8,8 @@ class ApiController < ApplicationController
   end
 
   def authenticate
-    user = User.authenticate(params['email'], params['password'])
-    message = user ? "success" : "email or password not match"
+    user = User.find_for_authentication(email: params[:email])
+    message = user.valid_password?(params[:password]) ? "success" : "email or password not match"
     result = {
       message: message
     }
